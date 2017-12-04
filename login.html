@@ -1,0 +1,95 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Inventário - Login</title>
+	<link href="senai.ico" rel="shortcut icon" type="image/x-icon"/>
+	<style>
+
+*{
+margin: 0;
+padding: 0;
+}
+
+.conteudo_geral{
+	width: 100vw; /*100% da largura da tela*/
+	height: 100vh; /*100% da altura da tela*/
+}
+
+.conteudo_esquerdo{
+		width: 50%;
+		height:  100%;
+		background:	white;
+		float: left;
+}
+
+.conteudo_esquerdo h1{
+	color: black;
+	text-align: center;
+	padding-top: 45%;
+}
+
+.conteudo_direito{
+	width: 	50%;
+	height: 100%;
+	background: #680055;
+	float: left;
+}
+
+.logo{
+	width: 	150px;
+	margin: 0 auto;
+	margin-top: 30%;
+}
+
+.logo img{
+	width: 150px;
+}
+
+.formulario{
+	width: 	50%;		
+	display: block;
+	margin:5% auto;
+}
+
+.formulario input{
+	width: 	100%;
+	height: 	2em;
+	margin-bottom: 1em;
+}
+
+.formulario input[type="submit"]{
+	border:none;
+	background: #999;
+	color: 	#fff;
+}
+
+.formulario input:placeholder{
+	text-align: center;
+}
+
+</style></head>
+
+<body>
+<div class="conteudo_geral">
+	<div class="conteudo_esquerdo">
+		<h1>BEM VINDO AO INVENTÁRIO</h1>
+	</div>
+	<div class="conteudo_direito">
+		<div class="logo">
+			<img src="senai-logo.jpg">
+		</div>
+
+
+		<form class="formulario" action="/cgi-bin/login_post.cgi" method="post">
+			<input type="text" name="nome" placeholder="Digite seu nome de usuário">
+			<input type="password" name="senha" placeholder="Digite sua senha">
+			<input type="submit" value="Entrar">
+		</form>
+
+	</div>
+
+</div>
+
+</body>
+
+</html>

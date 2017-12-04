@@ -1,0 +1,41 @@
+#!/bin/bash
+categ(){
+	categoria=$(dialog --stdout --inputbox "Digite o nome da categoria: " 0 0)
+	aleatorio=$(echo $RANDOM)
+	cat ./dados/inventario.csv | grep $categoria  > "./tmp/$aleatorio.tmp"
+	numero=$(cat ./tmp/$aleatorio.tmp | wc | awk '{print $1}')
+	read -p "Tranqueira"	
+	echo >> ./tmp/$aleatorio.tmp
+	echo "Número total de itens na categoria $categoria : $numero" >> ./tmp/$aleatorio.tmp
+	dialog --textbox "./tmp/$aleatorio.tmp" 0 0
+	rm ./tmp/$aleatorio.tmp
+	menu
+}
+opcao(){
+case $op in
+	"Categoria") categ ;;
+	"Subcategoria") subca;;
+	"Nome") nome ;;
+	"Localidade") loca ;;
+	"Patrimônio") patri ;;
+	*) dialog --msgbox "Falha no script. Erro: $err" ;;
+esac
+}
+menu(){
+op=$(dialog 					\
+		--stdout 			\
+		--menu "Escolha o tipo de relatório: "	\
+		0 0 0					\
+		Categoria "Relatório por categoria"	\
+		Subcategoria "Relatório por Subcategoria" \
+		Nome "Relatório por nome"		\
+		Localidade "Relatório por localidade"	\
+		Patrimônio "Relatório por número de patrimônio")
+err=$?
+case $err in
+	0) opcao ;;
+	1|255) exit 0 ;;
+	*) dialog --msgbox "Falha no script. Erro: $err" ;;
+esac		
+}
+menu
